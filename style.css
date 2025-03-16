@@ -95,3 +95,32 @@ a{
     padding: 10px;
     background-color: #38444D;
 }
+
+
+#textInput {
+    display: block;
+    margin: 10px auto;
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+}
+
+#updateButton {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #C1C1C1;
+    border: 2px solid #38444D;
+    cursor: pointer;
+}
+
+#updateButton:hover {
+    background-color: #38444D;
+    color: white;
+}
+
+#container{
+    position: relative;
+    text-align: center;
+    color: white;
+}
