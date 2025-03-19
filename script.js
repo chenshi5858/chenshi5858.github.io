@@ -20,7 +20,8 @@ async function getAPIContent(){
     await fetch(url)
             .then(response => response.json())
             .then(data => {
-                displayNews(data.articles);
+                const topArticles = data.articles.slice(0, 10);
+                displayNews(topArticles);
             })
             .catch(error => console.error('Error fetching news:', error));
 }
