@@ -5,6 +5,70 @@ document.addEventListener("DOMContentLoaded", (event)=>{
         document.getElementById("textInput").value = "";   
         
     });
+    document.getElementById("textInput").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("updateButton").click();
+        }
+    });
+
+    document.getElementById('modeSwitch').addEventListener('change', function() {
+        if (this.checked) {
+            document.body.classList.remove('bg-dark', 'text-light');
+            document.body.classList.add('bg-light', 'text-dark');
+
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.classList.remove('bg-custom-dark', 'text-light');
+                card.classList.add('bg-custom-light', 'text-dark');
+            });
+    
+            let table = document.querySelectorAll('.table');
+            table.forEach(tbl => {
+                tbl.classList.remove('table-dark');
+                tbl.classList.add('table-light');
+            });
+            let listItems = document.querySelectorAll('.list-group-item');
+            listItems.forEach(item => {
+                item.classList.remove('bg-dark');
+                item.classList.add('bg-light');
+            });
+
+            let btnGitHub = document.querySelector(".btn-outline-light");
+            if (btnGitHub) {
+                btnGitHub.classList.remove("btn-outline-light");
+                btnGitHub.classList.add("btn-outline-dark");
+            }
+        } else {
+            document.body.classList.remove('bg-light', 'text-dark');
+            document.body.classList.add('bg-dark', 'text-light');
+    
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.classList.remove('bg-custom-light', 'text-dark');
+                card.classList.add('bg-custom-dark', 'text-light');
+            });
+    
+            let table = document.querySelectorAll('.table');
+            table.forEach(tbl => {
+                tbl.classList.remove('table-light');
+                tbl.classList.add('table-dark');
+            });
+    
+            let listItems = document.querySelectorAll('.list-group-item');
+            listItems.forEach(item => {
+                item.classList.remove('bg-light');
+                item.classList.add('bg-dark');
+            });
+    
+            let btnGitHub = document.querySelector(".btn-outline-dark");
+            if (btnGitHub) {
+                btnGitHub.classList.remove("btn-outline-dark");
+                btnGitHub.classList.add("btn-outline-light");
+            }
+        }
+    });
+    
 
     getAPIContent();
 
@@ -32,7 +96,7 @@ function displayNews(articles) {
 
     articles.forEach(article => {
         const listItem = document.createElement('li');
-        listItem.classList.add('list-group-item', 'bg-dark');
+        listItem.classList.add('list-group-item', 'bg-dark', 'p-3');
         listItem.innerHTML = `
             <h5>${article.title}</h5>
             <p><strong>Source:</strong> ${article.source.name}</p>
